@@ -3,7 +3,7 @@
         //Käyttäjän tila
         if($_SESSION['sloggedIn']=="yes"){
             echo("<p>** User: " .$_SESSION['suserName']);
-            echo(" ** Logout</p>");
+            echo("<a href=\"logOutUser.php\"> Log out </a>");
         }else{
     ?>
     <a href="createAccount.php">
