@@ -1,0 +1,5 @@
+CREATE TABLE `TeHoChat_user` (
+  `userID` int(9) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `userName` text NOT NULL,
+  `userPasword` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
