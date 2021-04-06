@@ -24,25 +24,21 @@
         include("includes/iheader.php");
         include("includes/inavCreateAccount.php");
         include("forms/fcreateAccount.php");
+        require_once("functions/functions.php");
 
         //Lomakkeen submit painettu?
         if(isset($_POST['submitUser'])){
             //Tarkistetaan syötteet myös palvelimella
-            if(strlen($_POST['givenUsername']) < 4){
-                $_SESSION['swarningInput']="Laiton käyttäjätunnus (min 4 merkkiä)";
-                echo("nimi");
+            //if(!preg_match('/^\+358[0-9]{9}$ || /^\358[0-9]{9}$/', $_POST['givenPhoneNumber'])){
 
-            }else if(strlen($_POST['givenPhoneNumner']) < 10){
-                $_SESSION['swarningInput']="Laiton puhelinnumero (min 10 merkkiä)";
-                echo("num");
+            if(!preg_match('/^\+358[0-9]{9}$/', $_POST['givenPhoneNumber'])){
+                $_SESSION['swarningInput']="Laiton puh1";
 
             }else if(strlen($_POST['givenPassword']) < 8){
                 $_SESSION['swarningInput']="Laiton salasana (min 8 merkkiä)";
-                echo("pwd");
 
             }else if($_POST['givenPassword'] != $_POST['givenPasswordVerify']){
                 $_SESSION['swarningInput']="Annettu ja vahvistettu salasanat eivät ole samoja";
-                echo("npwd");
                     
             }else{
                 unset($_SESSION['swarningInput']);
@@ -52,9 +48,7 @@
                 $_SESSION['suserNumber']= $_POST['givenPhoneNumber'];
                 //2. Tiedot kantaan - kesken
                 //Testataan pääsivulle paluu
-                //Palataan pääsivulle jos tallennus onnistui -kesken
-                header("Location: index.php");
-            
+                //Palataan pääsivulle jos tallennus onnistui -kesken   
 
                 $data['name'] = $_POST['givenUsername'];
                 $data['phoneNumber'] = $_POST['givenPhoneNumber'];
@@ -64,7 +58,7 @@
                     //***Käyttäjätunnus ei saa olla käytetty aiemmin
                     $sql = "SELECT COUNT(*) FROM TeHoChat_user where userName  =  " . "'".$_POST['givenUsername']."'"  ;
                     //***Numero ei saa olla käytetty aiemmin
-                    $sql = "SELECT COUNT(*) FROM TeHoChat_user where userPhoneNumber  =  " . "'".$_POST['givenPhoneNumber']."'"  ;
+                    //$sql = "SELECT COUNT(*) FROM TeHoChat_user where userPhoneNumber  =  " . "'".$_POST['givenPhoneNumber']."'"  ;
 
                     $kysely=$DBH->prepare($sql);
                     $kysely->execute();				

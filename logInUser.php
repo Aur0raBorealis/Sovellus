@@ -18,9 +18,9 @@
             //lomakkeelle annettu salasana + suola
             $givenPasswordAdded = $_POST['givenPassword'].$added; //$added löytyy cconfig.php
 
-            //Löytyikö email kannasta?   
+            //Löytyikö tunus kannasta?   
             if($tulosOlio!=NULL){
-                //email löytyi
+                //Tunnus löytyi
                 // var_dump($tulosOlio);
                 if(password_verify($givenPasswordAdded,$tulosOlio->userPassword)){
                     $_SESSION['sloggedIn']="yes";
