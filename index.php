@@ -33,7 +33,7 @@
 		<div id="menu">
 			<ul>
 				<li class="current_page_item"><a href="#" accesskey="1" title="">Homepage</a></li>
-				<li><a href="#" accesskey="2" title="">Aloita chat</a></li>
+				<li><a href="userChat.php" accesskey="2" title="">Aloita chat</a></li>
 				<li><a href="#" accesskey="3" title="">HRV</a></li>
 				<li><a href="#" accesskey="4" title="">Careers</a></li>
 				<li><a href="#" accesskey="5" title="">Asetukset</a></li>
